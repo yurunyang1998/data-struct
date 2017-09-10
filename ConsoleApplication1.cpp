@@ -1,7 +1,8 @@
 // ConsoleApplication1.cpp : 定义控制台应用程序的入口点。
 //
-
 #include "stdafx.h"
+#include  <iostream>
+
 using  namespace std;
 
 class jiedian
@@ -31,26 +32,50 @@ class jiedian
 		{
 			next = nextt;
 		}
+		int   getnum()
+		{
+			return  num;
+		}
+
+		int getvalue()
+		{
+			return  value;
+		}
+		/*
 		~jiedian()
 		{
 			delete next;
 		}
+		*/
 };
 
 void main()
 {
-	jiedian node0(10, 2);
-	jiedian*  head = node0.getthis();
+
+	jiedian node0(1, 2);
+	jiedian*  node0_fuben = node0.getthis();
 	int i;
-	for (i = 9; i > 0; i--)
+	jiedian*   node0_zhizheng = node0.getthis();
+	for(i=0;i<10;i++)
 	{
-		jiedian node1(i, 2, head);
-		jiedian*   temp = node1.getthis();
-		head = temp;
+		jiedian node_new(i, 2, node0_zhizheng);
+		node0_zhizheng = node_new.getthis();
+		//cout << i<<endl;
 	}
-	node0.setnext (head);
+	node0_fuben.
 
+	int k = 10;
 	
+	for (k = 0; k < 10; k++)
+	{
+		//node_temp = node0.getthis();
+	
+		//cout << 1;
+		std::cout <<node0_fuben->getnum() << endl;
 
+		node0_fuben = node0_fuben->getnext();
+	}
+	
+	
 
 }
