@@ -27,22 +27,6 @@ int InitStack(Stack *S)
     }
 }
 
-int CreateStack(Stack *S , int n)
-{
-    if(n > MAXSIZE || n < 1)
-    {
-        printf("Lenth error");
-        return False;
-    }
-    int i;
-    for(i = 0; i < n; i++)
-    {
-        S->data[i]=rand()%100+1;
-    }
-    S->top = n-1;
-    return Ture;
-}
-
 int Push(Stack *S , char e)
 {
     if(MAXSIZE-1 == S->top)
@@ -95,6 +79,7 @@ void MidtoFin(char *Mid , char *Fin)
                 Pop(&S,&e);
 
                 *(Fin++)=e;
+                //printf("%c ",e);
                 while(Pop(&S,&e) && e!='(')
                 {
                      *(Fin++) = e;
@@ -105,6 +90,7 @@ void MidtoFin(char *Mid , char *Fin)
            }//if
         }//elseif
          Pop(&S,&e);
+
          if('+'==*Mid || '-'==*Mid)
          {
              if(e == '(')
@@ -124,7 +110,6 @@ void MidtoFin(char *Mid , char *Fin)
          {
              if(e == '*' || e == '/')
              {
-                 *(Fin++)= e;
                  Push(&S,*(Mid++));
                  continue;
              }
@@ -136,11 +121,7 @@ void MidtoFin(char *Mid , char *Fin)
              }
          }
     }//while
-    while(S.top != -1)
-    {
-        Pop(&S,&e);
-        *(Fin++) = e;
-    }
+
     *Fin = '\0';
 }
 
@@ -234,10 +215,9 @@ int main(void)
 	int y;
 	printf("input:\n");
 	gets(Mid);
-	MidtoFin(Mid , Fin);
-	//printf("%s\n",Fin);
+	MidtoFin(Mid , Fin);//中缀表达式换成后缀表达式
+	printf("%s\n",Fin);
 	y=SumOfFin(Fin);
     printf("The result is :%d",y);
 	return 0;
 }
-
